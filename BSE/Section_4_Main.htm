@@ -1,0 +1,75 @@
+<!-- 
+'*************************************************************************
+'	created:	17 Saturday May 2004, 10:25:27
+'	filename: 	Index.htm
+'	file ext:	htm
+'	author:		Khurram Javaid
+'	
+'	purpose:	Sends theanswerlist and question via QueryString to the 
+'				Section_2/Q6.htm 
+'				These are used to display the Question Data and Answer 
+'				Choices
+'*************************************************************************
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>Question Paper</TITLE>
+		<SCRIPT Language="JavaScript">
+
+		function QueryString(key)
+		{
+			var value = null;
+			for (var i=0;i<QueryString.keys.length;i++)
+			{
+				if (QueryString.keys[i]==key)
+				{
+					value = QueryString.values[i];
+					break;
+				}
+			}
+			return value;
+		}
+		QueryString.keys = new Array();
+		QueryString.values = new Array();
+
+		function QueryString_Parse()
+		{
+			var query = window.location.search.substring(1);
+			var pairs = query.split("&");
+			
+			for (var i=0;i<pairs.length;i++)
+			{
+				var pos = pairs[i].indexOf('=');
+				if (pos >= 0)
+				{
+					var argname = pairs[i].substring(0,pos);
+					var value = pairs[i].substring(pos+1);
+					QueryString.keys[QueryString.keys.length] = argname;
+					QueryString.values[QueryString.values.length] = value;		
+				}
+			}
+
+		}
+
+		QueryString_Parse();
+		</SCRIPT>
+		
+		<SCRIPT language="javascript">
+		function setAnswers(){			
+			//src="Section_2/Q11.htm?answers="+"javascript:QueryString('answers')"+"&question=11"
+			window.frames["main"].window.location.href= 'Section_4/Q41.htm?answers='+QueryString('answers')+'&question=41';
+		
+		}
+		</SCRIPT>
+	</HEAD>
+	<FRAMESET framespacing="0" border="0" frameborder="0" rows="155,70%" onload="setAnswers();">
+		<FRAME name="header" scrolling="no" noresize src="Section_4/Section_4_Header.htm">
+		<FRAME name="main" scrolling="auto" noresize >
+		<NOFRAMES>
+			<BODY>
+				<P>This page uses frames, but your browser doesn&#39;t support them.</P>
+			</BODY>
+		</NOFRAMES>
+	</FRAMESET>
+</HTML>

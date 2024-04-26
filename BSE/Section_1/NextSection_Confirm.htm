@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>Next Section Confirmation</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META content="Microsoft FrontPage 6.0" name="GENERATOR">
+		<META content="Visual Basic 7.0" name="CODE_LANGUAGE">
+		<META content="JavaScript" name="vs_defaultClientScript">
+		<META content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<LINK href="../NUTES.css" type="text/css" rel="stylesheet">
+		<SCRIPT Language="JavaScript">
+			//
+			// QueryString
+			//
+
+			function QueryString(key)
+			{
+				var value = null;
+				for (var i=0;i<QueryString.keys.length;i++)
+				{
+					if (QueryString.keys[i]==key)
+					{
+						value = QueryString.values[i];
+						break;
+					}
+				}
+				return value;
+			}
+			QueryString.keys = new Array();
+			QueryString.values = new Array();
+
+			function QueryString_Parse()
+			{
+				var query = window.location.search.substring(1);
+				var pairs = query.split("&");
+				
+				for (var i=0;i<pairs.length;i++)
+				{
+					var pos = pairs[i].indexOf('=');
+					if (pos >= 0)
+					{
+						var argname = pairs[i].substring(0,pos);
+						var value = pairs[i].substring(pos+1);
+						QueryString.keys[QueryString.keys.length] = argname;
+						QueryString.values[QueryString.values.length] = value;		
+					}
+				}
+
+			}
+
+			QueryString_Parse();
+		</SCRIPT>
+		<SCRIPT language="javascript">
+				
+		function goNext(){
+				//alert('Going next ..');
+				
+				iQNum = new Number(window.Form1.thequestion.value);
+				iQNum = iQNum + 1;
+				window.Form1.action = '../Section_2/Q'+iQNum+'.htm?answers='+window.Form1.theanswerlist.value+'&question='+iQNum;
+				//alert(window.Form1.action);
+				window.Form1.target = "_self";	// Open in current window
+				window.Form1.submit();			// Submit the page
+				//return true;
+				
+				//alert('../Section_3/Section_3_Header.htm');
+				window.parent.frames["header"].window.location.href= '../Section_2/Section_2_Header.htm';
+				//alert('../Section_2/Q11.htm?answers='+window.Form1.theanswerlist.value+'&question=11');
+				//window.parent.frames["main"].window.location.href= '../Section_2/Q11.htm?answers='+window.Form1.theanswerlist.value+'&question=11';
+			}
+			
+			function goBack(){
+				//alert('Going previous ..');
+				iQNum = new Number(window.Form1.thequestion.value);
+				
+				window.Form1.action = 'Q'+iQNum+'.htm?answers='+window.Form1.theanswerlist.value+'&question='+iQNum;
+				//alert(window.Form1.action);
+				window.Form1.target = "_self";	// Open in current window
+				window.Form1.submit();			// Submit the page
+				return true;
+
+			}
+			
+			
+			function setAnswers(){
+
+				qnum = new String('');
+				qnum=QueryString('question');
+				window.Form1.thequestion.value = qnum;
+				//alert('QueryString question: ' + window.Form1.thequestion.value);
+							
+				anslist = new String('');
+				anslist=QueryString('answers');
+				window.Form1.theanswerlist.value = anslist;			
+				//alert('QueryString answers: ' +window.Form1.theanswerlist.value);
+
+			}
+
+		</SCRIPT>
+	</HEAD>
+	<BODY MS_POSITIONING="GridLayout" onload="setAnswers()">
+		<FORM id="Form1" name="Form1" method="post">
+			<TABLE id="Table1" style="Z-INDEX: 100; LEFT: 16px; POSITION: absolute; TOP: 8px" cellSpacing="0"
+				cellPadding="0" width="100%" border="0">
+				<TBODY>
+					<TR>
+						<TD colSpan="4">
+							<DIV align="center"><BR>
+								<TABLE class="TableBorder" id="Table2" cellSpacing="0" cellPadding="6" rules="groups" width="65%"
+									align="center" border="1">
+									<TBODY>
+										<TR>
+											<TD bgColor="#003366" colSpan="2" height="24">
+												<DIV class="Table_1-header" align="center">Confirm Section Change
+												</DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD vAlign="middle" align="center" width="50%"><!-- Functional Code Start-->
+												<DIV style="WIDTH: 460px; POSITION: relative; HEIGHT: 200px; BACKGROUND-COLOR: whitesmoke"
+													align="center" ms_positioning="GridLayout"><SPAN class="StrongText" id="lblConfirmation" style="Z-INDEX: 101; LEFT: 56px; POSITION: absolute; TOP: 14px">Are 
+														you sure you want to goto the Next Section?</SPAN> <SPAN class="NormalText" id="lblConfirmNote" style="Z-INDEX: 104; LEFT: 109px; WIDTH: 262px; POSITION: absolute; TOP: 120px">
+														NOTE: Selecting YES will take you to the Next Section; you will NOT be able to 
+														come back, and NO will take you back to the question you were attempting</SPAN>
+													<INPUT class="coolButton" id="btnNONextSection" style="Z-INDEX: 103; LEFT: 248px; WIDTH: 65px; POSITION: absolute; TOP: 56px; HEIGHT: 24px"
+														type="submit" value="NO" name="btnNONextSection" onclick="goBack()"> <INPUT class="coolButton" id="btnYesNextSection" style="Z-INDEX: 102; LEFT: 144px; WIDTH: 65px; POSITION: absolute; TOP: 56px; HEIGHT: 24px"
+														type="submit" value="YES" name="btnYesNextSection" onclick="goNext()"></DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD colSpan="2">
+												<DIV class="footer-text" style="BORDER-LEFT-COLOR: aqua; BORDER-BOTTOM-COLOR: aqua; BORDER-TOP-COLOR: aqua; BORDER-RIGHT-COLOR: aqua"
+													align="center"> © National University of Computer and Emerging Sciences</DIV>
+											</TD>
+										</TR>
+									</TBODY>
+								</TABLE>
+							</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<INPUT ID="theanswerlist" STYLE="Z-INDEX: 103; LEFT: 16px; POSITION: absolute; TOP: 376px"
+				TYPE="hidden" VALUE="null" NAME="theanswerlist"> <INPUT id="thequestion" style="Z-INDEX: 102; LEFT: 16px; POSITION: absolute; TOP: 344px"
+				type="hidden" value="null" name="thequestion"> &nbsp;
+		</FORM>
+	</BODY>
+</HTML>

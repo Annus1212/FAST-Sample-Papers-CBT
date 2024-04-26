@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>Section Time Up</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META content="Microsoft FrontPage 6.0" name="GENERATOR">
+		<META content="Visual Basic 7.0" name="CODE_LANGUAGE">
+		<META content="JavaScript" name="vs_defaultClientScript">
+		<META content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<LINK href="../NUTES.css" type="text/css" rel="stylesheet">
+		<SCRIPT language="JavaScript" src="../scripts/security.js"></SCRIPT>
+		<SCRIPT Language="JavaScript">
+		//
+		// QueryString
+		//'Skip Forward ►';				
+		//'◄ Skip Back';
+
+
+		function QueryString(key)
+		{
+			var value = null;
+			for (var i=0;i<QueryString.keys.length;i++)
+			{
+				if (QueryString.keys[i]==key)
+				{
+					value = QueryString.values[i];
+					break;
+				}
+			}
+			return value;
+		}
+		QueryString.keys = new Array();
+		QueryString.values = new Array();
+
+		function QueryString_Parse()
+		{
+			var query = window.location.search.substring(1);
+			var pairs = query.split("&");
+			
+			for (var i=0;i<pairs.length;i++)
+			{
+				var pos = pairs[i].indexOf('=');
+				if (pos >= 0)
+				{
+					var argname = pairs[i].substring(0,pos);
+					var value = pairs[i].substring(pos+1);
+					QueryString.keys[QueryString.keys.length] = argname;
+					QueryString.values[QueryString.values.length] = value;		
+				}
+			}
+
+		}
+
+		QueryString_Parse();
+		</SCRIPT>
+<SCRIPT language="javascript">
+		function goNextSection(){
+			//window.parent.frames["header"].window.location.href= '../Section_2/Section_2_Header.htm';
+			//window.parent.frames["main"].window.location.href= '../Section_2/Q11.htm?answers='+strAnswerList+'&question=6';			
+			
+			window.Form1.action='../Section_5_Main.htm?answers='+window.Form1.theanswerlist.value;
+			window.Form1.submit();
+			
+		}
+		
+		function setAnswers(){
+							
+				anslist = new String('');
+				anslist=QueryString('answers');
+				window.Form1.theanswerlist.value = anslist;			
+				//alert('QueryString answers: ' +window.Form1.theanswerlist.value);
+				
+								
+				
+			}	
+        </SCRIPT>
+	</HEAD>
+	<BODY MS_POSITIONING="GridLayout" onload="setAnswers()">
+		<FORM id="Form1" name="Form1" method="post">
+			<TABLE id="Table1" style="Z-INDEX: 101; LEFT: 8px; POSITION: absolute; TOP: 8px" cellSpacing="0"
+				cellPadding="0" width="100%" border="0">
+				<TBODY>
+					<TR>
+						<TD align="center"><SPAN class="MainText" id="lblTestName">Online Admission Test</SPAN></TD>
+					</TR>
+					<TR>
+						<TD colSpan="4">
+							<DIV align="center"><BR>
+								<TABLE class="TableBorder" id="Table2" cellSpacing="0" cellPadding="6" rules="groups" width="65%"
+									align="center" border="1">
+									<TBODY>
+										<TR>
+											<TD bgColor="#003366" colSpan="2" height="24">
+												<DIV class="Table_1-header" align="center">Section Timeup!</DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD vAlign="middle" align="center" width="50%"><!-- Functional Code Start-->
+												<DIV style="WIDTH: 460px; POSITION: relative; HEIGHT: 120px; BACKGROUND-COLOR: whitesmoke"
+													align="center" ms_positioning="GridLayout"><SPAN class="StrongText" id="lblConfirmation" style="Z-INDEX: 101; LEFT: 77px; WIDTH: 327px; POSITION: absolute; TOP: 24px">The 
+														time for the current section is finished , click OK to proceed</SPAN> <INPUT class="coolButton" id="btnOK" title="Goto next section" style="Z-INDEX: 102; LEFT: 208px; WIDTH: 65px; POSITION: absolute; TOP: 80px; HEIGHT: 24px"
+														type="submit" value="OK" name="btnOK" onclick="goNextSection()"></DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD colSpan="2">
+												<DIV class="footer-text" style="BORDER-LEFT-COLOR: aqua; BORDER-BOTTOM-COLOR: aqua; BORDER-TOP-COLOR: aqua; BORDER-RIGHT-COLOR: aqua"
+													align="center">  © National University of Computer and Emerging Sciences</DIV>
+											</TD>
+										</TR>
+									</TBODY>
+								</TABLE>
+							</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<INPUT ID="theanswerlist" STYLE="Z-INDEX: 102; LEFT: 176px; POSITION: absolute; TOP: 304px"
+				TYPE="hidden" NAME="theanswerlist">
+		</FORM>
+	</BODY>
+</HTML>

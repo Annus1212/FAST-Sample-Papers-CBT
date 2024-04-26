@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST-NUCES Website Past Paper</title>
+</head>
+<style>
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-align: center;
+        margin: 2.5rem;
+    }
+    * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem;
+    }
+    button {
+        width:25rem;
+        padding: 0.75rem 0rem;
+        margin: 0.5rem;
+        cursor: pointer;
+        border-radius: 0.4rem;
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.05rem;
+        color: #ffffff;
+        background-color: #1976D2;
+    }
+    a {
+        color: black;
+        text-decoration:  none;
+    }
+</style>
+<body>
+    <h2>Welcome to FAST-NUCES Website Sample Papers</h2>
+    <div>Click any of the Following Fields to Start Sample Paper</div>
+    <div>
+        <a href="BBA/index.htm"><button>BBA/BSAF/BSBA/BS Fintech</button></a>
+        <a href="BSE/index.htm"><button>BSCS/BSSE/BSEE (Eng.)</button></a>
+    </div>
+    <script>
+        function isMobile() {
+            const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+            return regex.test(navigator.userAgent);
+        }
+
+        if (isMobile()) {
+            console.log("Mobile device detected");
+        } else {
+            console.log("Desktop device detected");
+        }
+    </script>
+</body>
+</html>

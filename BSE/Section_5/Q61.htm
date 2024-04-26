@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<TITLE>Question</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<LINK href="../NUTES.css" type="text/css" rel="stylesheet">
+			<SCRIPT language="JavaScript" src="../scripts/security.js"></SCRIPT>
+			<SCRIPT Language="JavaScript">
+//
+// QueryString
+
+
+
+function QueryString(key)
+{
+	var value = null;
+	for (var i=0;i<QueryString.keys.length;i++)
+	{
+		if (QueryString.keys[i]==key)
+		{
+			value = QueryString.values[i];
+			break;
+		}
+	}
+	return value;
+}
+QueryString.keys = new Array();
+QueryString.values = new Array();
+
+function QueryString_Parse()
+{
+	var query = window.location.search.substring(1);
+	var pairs = query.split("&");
+	
+	for (var i=0;i<pairs.length;i++)
+	{
+		var pos = pairs[i].indexOf('=');
+		if (pos >= 0)
+		{
+			var argname = pairs[i].substring(0,pos);
+			var value = pairs[i].substring(pos+1);
+			QueryString.keys[QueryString.keys.length] = argname;
+			QueryString.values[QueryString.values.length] = value;		
+		}
+	}
+
+}
+
+QueryString_Parse();
+			</script>
+			<script Language="JavaScript">
+
+			function RefreshTopFrame() {
+			window.onerror = null
+	         
+			if (top.location != self.location)
+				{
+					window.parent.frames["header"].window.location.reload(true);					
+					//window.parent.frames["menu"].window.location.reload(true);
+				}
+			}
+	         		
+			function doReset(){
+				//alert('Reseting .. ');
+				
+				//clearing the radio buttons
+				window.Form1.radioChoice[0].checked = false;
+				window.Form1.radioChoice[1].checked = false;
+				window.Form1.radioChoice[2].checked = false;
+				window.Form1.radioChoice[3].checked = false;
+				window.Form1.radioChoice[4].checked = false;
+				
+				//disable the next/previous buttons and clear button
+				if (window.Form1.btnNext.isLast!=1)
+					window.Form1.btnNext.value = "Skip Forward ►";				
+				
+				
+				window.Form1.btnPrevious.value = "◄ Skip Back";
+				window.Form1.btnClear.disabled = true;				
+				
+				//make current selected choice to none
+				window.Form1.radioclicked.value = 0;
+				
+				//make the selected choice in the answerlist to zero i.e. no answer
+					//Update the answerlist 
+					strAnswerList = new String();
+					var tempAnswerList;
+					tempAnswerList = window.Form1.theanswerlist.value;
+					strAnswerList = tempAnswerList;
+					
+					//get the current question number to locate its answer in the answer list
+					iQNum = new Number(window.Form1.thequestion.value);
+					
+					//make the new answerlist by answerlistbeforecurrent + current answer + answerlistafteranswer
+					strNewAnswerList = new String(strAnswerList.substring(0,iQNum-1)+0+strAnswerList.substring(iQNum));
+					window.Form1.theanswerlist.value=strNewAnswerList;
+					//alert(window.Form1.theanswerlist.value);
+
+			}
+						
+			function radioChangeHandler()
+			{
+				window.Form1.btnNext.disabled = false;
+				//if it is the last question then disable skip				
+				window.Form1.btnClear.disabled = false;				
+				if(window.Form1.btnPrevious.isFirst!=1) 
+					window.Form1.btnPrevious.disabled = false;
+				if(window.Form1.btnNext.isLast!=1)
+					window.Form1.btnNext.value = "Forward ►";
+				window.Form1.btnPrevious.value = "◄ Back";
+			
+			
+				if (window.Form1.radioChoice[0].checked)
+						//alert("You're 1")
+						window.Form1.radioclicked.value = 1
+					else if (window.Form1.radioChoice[1].checked)
+						//alert("You're 2")
+						window.Form1.radioclicked.value = 2
+					else if (window.Form1.radioChoice[2].checked)
+						//alert("You're 3")
+						window.Form1.radioclicked.value = 3						
+					else if (window.Form1.radioChoice[3].checked)
+						//alert("You're 4")									
+						window.Form1.radioclicked.value = 4
+					else if (window.Form1.radioChoice[4].checked)
+						//alert("You're 5")		
+						window.Form1.radioclicked.value = 5
+						
+
+					//Update the answerlist	
+					strAnswerList = new String();
+					var tempAnswerList;
+					tempAnswerList = window.Form1.theanswerlist.value;
+					strAnswerList = tempAnswerList;
+					
+					//get the current question number to locate its answer in the answer list
+					iQNum = new Number(window.Form1.thequestion.value);
+				
+					
+					//make the new answerlist by answerlistbeforecurrent + current answer + answerlistafteranswer
+					strNewAnswerList = new String(strAnswerList.substring(0,iQNum-1)+window.Form1.radioclicked.value+strAnswerList.substring(iQNum));
+					window.Form1.theanswerlist.value=strNewAnswerList;
+					//alert(window.Form1.theanswerlist.value);
+			}
+			
+			function goNext(){
+				//alert('Going next ..');
+				
+				iQNum = new Number(window.Form1.thequestion.value);
+				iQNum = iQNum + 1;
+				window.Form1.action = 'Q'+iQNum+'.htm?answers='+window.Form1.theanswerlist.value+'&question='+iQNum;
+				//alert(window.Form1.action);
+				window.Form1.target = "_self";	// Open in current window
+				window.Form1.submit();			// Submit the page
+				return true;
+			}
+			
+			function goBack(){
+				//alert('Going previous ..');
+				iQNum = new Number(window.Form1.thequestion.value);
+				iQNum = iQNum - 1;
+				window.Form1.action = 'Q'+iQNum+'.htm?answers='+window.Form1.theanswerlist.value+'&question='+iQNum;
+				//alert(window.Form1.action);
+				window.Form1.target = "_self";	// Open in current window
+				window.Form1.submit();			// Submit the page
+				return true;
+
+			}
+			
+			function goUAList(){
+				window.Form1.action = 'Section_5_UAList.htm?answers='+window.Form1.theanswerlist.value+'&question='+window.Form1.thequestion.value;
+				window.Form1.target= "_self";
+				window.Form1.submit();
+				return true;
+			}
+	
+			
+			function setAnswers(){
+							
+				anslist = new String('');
+				anslist=QueryString('answers');
+				window.Form1.theanswerlist.value = anslist;			
+				//alert('QueryString answers: ' +window.Form1.theanswerlist.value);
+
+				qnum = new String('');
+				qnum=QueryString('question');
+				window.Form1.thequestion.value = qnum;
+				//alert('QueryString question: ' + window.Form1.thequestion.value);
+								
+				if (anslist.charAt(window.Form1.thequestion.value-1)!=0){
+					window.Form1.radioChoice[anslist.charAt(window.Form1.thequestion.value-1)-1].checked = true;
+					window.Form1.btnNext.value = "Forward ►";
+					window.Form1.btnPrevious.value = "◄ Back";
+					window.Form1.btnClear.disabled = false;
+				}
+				else{
+					//window.Form1.radioChoice[anslist.charAt(window.Form1.thequestion.value-1)-1].checked = true;
+					window.Form1.btnNext.value = "Skip Forward ►";
+					window.Form1.btnPrevious.value = "◄ Skip Back";
+					window.Form1.btnClear.disabled = true;
+				}
+			}			
+			</script>
+	</head>
+	<body leftMargin="0" topMargin="0" rightMargin="0" onload="setAnswers()" MS_POSITIONING="GridLayout">
+
+<form id="Form1" name="Form1" onreset="doReset()" method="post">
+  <input type="hidden" value="dDwxODkxMjAyNzIxO3Q8O2w8aTwwPjs+O2w8dDw7bDxpPDU+O2k8OT47aTwxMT47aTwxNT47aTwxNz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w8UXVlc3Rpb24gIyAxOz4+Oz47Oz47dDxwPHA8bDxJbWFnZVVybDs+O2w8U2hvd1F1ZXN0aW9uSW1hZ2UuYXNweD9ibG9iX2ltYWdlaWQ9NTs+Pjs+Ozs+O3Q8cDxwPGw8SW1hZ2VVcmw7PjtsPFNob3dRdWVzdGlvbkltYWdlLmFzcHg/YmxvYl9pbWFnZWlkPTU3Oz4+Oz47Oz47dDxwPHA8bDxFbmFibGVkOz47bDxvPGY+Oz4+O3A8bDxPbkNsaWNrOz47bDxkb1Jlc2V0KCk7Pj4+Ozs+O3Q8cDxwPGw8RW5hYmxlZDs+O2w8bzxmPjs+PjtwPGw8aXNGaXJzdDs+O2w8MTs+Pj47Oz47Pj47Pj47bDxfY3RsMDtfY3RsMDtfY3RsMTtfY3RsMTtfY3RsMjtfY3RsMjtfY3RsMztfY3RsMztfY3RsNDtfY3RsNDs+PsJnN6t/R5u3+ilkZ5Ie5MNMoiU8" name="__VIEWSTATE">
+  <table cellSpacing="0" cellPadding="0" width="100%" border="0">
+    <tr>
+      <td width="100%">
+      <div align="center">
+        <table borderColor="#003366" cellSpacing="0" cellPadding="0" width="90%" border="2">
+          <tr>
+            <td>
+            <div align="center">
+              <table cellSpacing="5" width="95%" align="center">
+                <tr>
+                  <td noWrap align="left" colSpan="4">
+					<p align="center"><SPAN class=QMsgText 
+                  id=lblQuestionMsg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This 
+                  is the First Question of this 
+                  section.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></TD></TR>
+              <TR>
+                <TD align=left colSpan=4><SPAN class=BoldText 
+                  id=lblDirections></SPAN></TD></TR>
+              <TR>
+                <TD align=left colSpan=4><SPAN class=NormalText 
+                  id=lblPassage></SPAN></TD></TR>
+              <TR>
+                <TD align=left colSpan=4><SPAN class=question-head 
+                  id=lblQuestionNumber>Question # 1</SPAN></TD></TR>
+              <TR>
+                <TD align=left colSpan=4><SPAN class=QuestionText 
+                  id=lblQuestionStatement></SPAN></TD></TR>
+              <TR>
+                <TD noWrap align=left colSpan=4><IMG id=imgQuestionText 
+                  alt="Question statement" 
+                  src="01-ShowQuestionImage.bmp" border=0></TD></TR>
+              <TR>
+                <TD noWrap align=middle colSpan=4></TD></TR>
+              <TR>
+                <TD colSpan=4>
+                  <TABLE class=QuestionText id=tblChoicesText 
+                  style="BORDER-LEFT-COLOR: transparent; BORDER-BOTTOM-COLOR: transparent; BORDER-TOP-COLOR: transparent; BORDER-RIGHT-COLOR: transparent" 
+                  borderColor=transparent cellPadding=10 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=top align=left><SPAN class=answer-head><INPUT 
+                        id=_ctl0 onclick=radioChangeHandler(); type=radio 
+                        value=_ctl0 name=radioChoice><LABEL 
+                        for=_ctl0>a</LABEL></SPAN></TD>
+                      <TD vAlign=center align=left>
+						<IMG 
+                        src="01-ShowQuestionImage(1).bmp" 
+                        border=0></TD></TR>
+                    <TR>
+                      <TD vAlign=center align=left colSpan=2></TD></TR>
+                    <TR>
+                      <TD vAlign=top align=left><SPAN class=answer-head><INPUT 
+                        id=_ctl2 onclick=radioChangeHandler(); type=radio 
+                        value=_ctl2 name=radioChoice><LABEL 
+                        for=_ctl2>b</LABEL></SPAN></TD>
+                      <TD vAlign=center align=left>
+						<IMG 
+                        src="01-ShowQuestionImage(2).bmp" 
+                        border=0></TD></TR>
+                    <TR>
+                      <TD vAlign=center align=left colSpan=2></TD></TR>
+                    <TR>
+                      <TD vAlign=top align=left><SPAN class=answer-head><INPUT 
+                        id=_ctl4 onclick=radioChangeHandler(); type=radio 
+                        value=_ctl4 name=radioChoice><LABEL 
+                        for=_ctl4>c</LABEL></SPAN></TD>
+                      <TD vAlign=center align=left>
+						<IMG 
+                        src="01-ShowQuestionImage(3).bmp" 
+                        border=0></TD></TR>
+                    <TR>
+                      <TD vAlign=center align=left colSpan=2></TD></TR>
+                    <TR>
+                      <TD vAlign=top align=left><SPAN class=answer-head><INPUT 
+                        id=_ctl6 onclick=radioChangeHandler(); type=radio 
+                        value=_ctl6 name=radioChoice><LABEL 
+                        for=_ctl6>d</LABEL></SPAN></TD>
+                      <TD vAlign=center align=left>
+						<IMG 
+                        src="01-ShowQuestionImage(4).bmp" 
+                        border=0></TD></TR>
+                    <TR>
+                      <TD vAlign=center align=left colSpan=2></TD></TR>
+                    <TR>
+                      <TD vAlign=top align=left><SPAN class=answer-head><INPUT 
+                        id=_ctl8 onclick=radioChangeHandler(); type=radio 
+                        value=_ctl8 name=radioChoice><LABEL 
+                        for=_ctl8>e</LABEL></SPAN></TD>
+                      <TD vAlign=center align=left>
+						<IMG 
+                        src="01-ShowQuestionImage(5).bmp" 
+                        border=0></TD></TR>
+                    <TR>
+                      <TD vAlign=center align=left 
+                  colSpan=2></TD></TR></TBODY></TABLE></TD></TR>
+
+                           											<tr>
+																			<td noWrap align="left" width="25%">
+																				<input id="btnClear" disabled onclick="doReset()" type="submit" value="Reset Choice" name="btnClear"
+																					class="coolButton">
+																			</td>
+																			<td noWrap align="right" width="25%">
+																				<INPUT id="btnUAList" onclick="goUAList()" type="submit" value="View Unanswered Questions"
+																					name="btnUAList" class="coolButton">
+																			</td>
+																			<td noWrap align="right" width="25%">
+																				<input id="btnPrevious" disabled type="submit" value="◄ Skip Back" name="btnPrevious" isFirst="1"
+																					class="coolButton"></td>
+																			<td noWrap align="left" width="25%">
+																				<input id="btnNext" type="submit" value="Skip Forward ►" name="btnNext" onclick="goNext()"
+																					class="coolButton"></td>
+																		</tr>
+																	</table>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+										</tr>
+										<tr>
+											<td><br>
+												<div class="footer-text" align="center">
+													  © National University of Computer and Emerging Sciences</div>
+											</td>
+										</tr>
+									</table>
+								</TD>
+							</TR>
+							<TR vAlign="top">
+								<TD height="23">
+									<input id="radioclicked" type="hidden" name="radioclicked"></TD>
+								<TD>
+									<input id="thequestion" type="hidden" name="thequestion"></TD>
+								<TD>
+									<input id="theanswerlist" type="hidden" name="theanswerlist"></TD>
+							</TR>
+						</TABLE>
+					</form>
+				</TD>
+			</TR>
+		</TABLE>
+	</body>
+</html>

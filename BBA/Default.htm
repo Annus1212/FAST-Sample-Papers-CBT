@@ -1,0 +1,46 @@
+<!-- 
+'*************************************************************************
+'	created:	17 Saturday May 2004, 10:25:26
+'	filename: 	ConfirmLogout.htm
+'	file ext:	htm
+'	author:		Khurram Javaid
+'	
+'	purpose:	Checks the client browser for Internet Explorer
+'				If successfull opens a full sized browser with no menu etc
+'				and displays the How to take the test page
+'*************************************************************************
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Language" content="en-us">
+		<TITLE>Close this window</TITLE>
+		<SCRIPT language="javascript">
+function cheatCloseWin ()
+ {
+  win = top;
+
+  // lying:
+  win.opener = top;
+
+  win.close ();
+ }
+
+	function Go(){
+		//check the browser
+		if(navigator.appName !='Microsoft Internet Explorer') 
+		{
+			alert('This Application is designed to run on \'Microsoft Internet Explorer 5.0 or Higher\' \n It will not function properly if you continue with this browser!');
+			window.close();
+		}
+		else
+		{
+			cheatCloseWin();			
+			window.open('How.htm','','directories=no,location=no,status=yes,menubar=no,resizable=yes,scrollbars=yes,toolbar=no,width=screen.width,height=screen.height',target="_parent");
+		}
+	}
+		</SCRIPT>
+	</HEAD>
+	<BODY onload="Go()">
+	</BODY>
+</HTML>

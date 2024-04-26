@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>UnansweredList</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META content="Microsoft FrontPage 6.0" name="GENERATOR">
+		<META content="Visual Basic 7.0" name="CODE_LANGUAGE">
+		<META content="JavaScript" name="vs_defaultClientScript">
+		<META content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<LINK href="../NUTES.css" type="text/css" rel="stylesheet">
+		<SCRIPT Language="JavaScript">
+//
+// QueryString
+//'Skip Forward ►';				
+//'◄► Skip Back';
+
+
+function QueryString(key)
+{
+	var value = null;
+	for (var i=0;i<QueryString.keys.length;i++)
+	{
+		if (QueryString.keys[i]==key)
+		{
+			value = QueryString.values[i];
+			break;
+		}
+	}
+	return value;
+}
+QueryString.keys = new Array();
+QueryString.values = new Array();
+
+function QueryString_Parse()
+{
+	var query = window.location.search.substring(1);
+	var pairs = query.split("&");
+	
+	for (var i=0;i<pairs.length;i++)
+	{
+		var pos = pairs[i].indexOf('=');
+		if (pos >= 0)
+		{
+			var argname = pairs[i].substring(0,pos);
+			var value = pairs[i].substring(pos+1);
+			QueryString.keys[QueryString.keys.length] = argname;
+			QueryString.values[QueryString.values.length] = value;		
+		}
+	}
+
+}
+
+QueryString_Parse();
+		</SCRIPT>
+		<SCRIPT language="javascript">
+		function goUAList(){
+				window.Form1.action = 'Section_1_UAList.htm?answers='+window.Form1.theanswerlist.value+'&question='+window.Form1.thequestion.value;
+				window.Form1.target= "_self";
+				window.Form1.submit();
+				return true;
+			}
+			
+		function setAnswers(){
+										
+				anslist = new String('');
+				anslist=QueryString('answers');
+				window.Form1.theanswerlist.value = anslist;			
+				//alert('QueryString answers: ' +window.Form1.theanswerlist.value);
+
+				
+				qnum = new String('');
+				qnum=QueryString('question');
+				window.Form1.thequestion.value = qnum;
+				//alert('QueryString question: ' +window.Form1.thequestion.value);
+				
+				iTotalQuestions = new Number(10);
+				iTotalUnAnswered = new Number(0);
+				iCurrent= new Number(0);
+				iFound = new Number(-1);
+				iOffSet = new Number(30);
+				i = new Number(0);
+				
+				for (i=iCurrent;i<iTotalQuestions;i++){
+					if (anslist.charAt(i+iOffSet)!='0') {						
+						document.all["tr"+(i+1)].style.display = 'none';						
+					}
+					else{
+						iTotalUnAnswered += 1;
+					}
+				}
+
+				document.all['lblTotalUnanswered'].innerHTML = 'Total Unanswered Questions: '+iTotalUnAnswered.toString();
+			}
+	
+		function gotoQuestion(iQNum){
+			//alert('Going next ..');
+								
+			window.Form1.action = 'Q'+iQNum+'.htm?answers='+window.Form1.theanswerlist.value+'&question='+iQNum;
+			//alert(window.Form1.action);
+			window.Form1.target = "_self";	// Open in current window
+			window.Form1.submit();			// Submit the page
+			return true;
+			}
+			
+		function goBack(){
+				//alert('Going previous ..');
+				iQNum = new Number(window.Form1.thequestion.value);
+				
+				window.Form1.action = 'Q'+iQNum+'.htm?answers='+window.Form1.theanswerlist.value+'&question='+iQNum;
+				//alert(window.Form1.action);
+				window.Form1.target = "_self";	// Open in current window
+				window.Form1.submit();			// Submit the page
+				return true;
+
+			}
+		</SCRIPT>
+	</HEAD>
+	<BODY ms_positioning="GridLayout" onload="setAnswers();">
+		<FORM id="Form1" name="Form1" method="post">
+			<TABLE id="Table1" style="Z-INDEX: 105; LEFT: 16px; POSITION: absolute; TOP: 48px" cellSpacing="1"
+				cellPadding="1" width="300" border="0">
+				<TBODY>
+					<TR>
+						<TD><SPAN class="StrongText" id="lblUnansweredQuestions" style="WIDTH: 352px; TEXT-DECORATION: underline">List 
+								of Unanswered Questions of this Section</SPAN></TD>
+						<TD></TD>
+					</TR>
+					<TR>
+						<TD align="center"><SPAN class="BoldText" id="lblTotalUnanswered"></SPAN></TD>
+						<TD vAlign="top" align="center"><INPUT class="coolButton" id="btnCancel" title="Back to Question" type="submit" value="Back"
+								name="btnCancel" onclick="goBack();"></TD>
+					</TR>
+					<TR>
+						<TD align="center">
+							<TABLE class="NormalText" id="dtgrdUnanswered" style="WIDTH: 250px; BORDER-COLLAPSE: collapse"
+								cellSpacing="0" rules="all" border="1">
+								<TBODY>
+									<TR style="FONT-WEIGHT: bold; COLOR: black; BACKGROUND-COLOR: silver" vAlign="middle"
+										align="center">
+										<TD>Question</TD>
+										<TD>&nbsp;</TD>
+									</TR>
+									<TR id="tr1">
+										<TD vAlign="top" align="center">1</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(31);">
+												Goto Q - 1</A></TD>
+									</TR>
+									<TR id="tr2">
+										<TD vAlign="top" align="center">2</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(32);">
+												Goto Q - 2</A></TD>
+									</TR>
+									<TR id="tr3">
+										<TD VALIGN="top" align="center">3</TD>
+										<TD STYLE="FONT-FAMILY: Arial" VALIGN="middle" align="center"><A HREF="javascript: gotoQuestion(33);">
+												Goto Q - 3</A></TD>
+									</TR>
+									<TR id="tr4">
+										<TD vAlign="top" align="center">4</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(34);">
+												Goto Q - 4</A></TD>
+									</TR>
+									<TR id="tr5">
+										<TD vAlign="top" align="center">5</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(35);">
+												Goto Q - 5</A></TD>
+									</TR>
+									<TR id="tr6">
+										<TD vAlign="top" align="center">6</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(36);">Goto  Q - 6</A></TD>
+									</TR>
+									<TR id="tr7">
+										<TD vAlign="top" align="center">7</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(37);">Goto  Q - 7</A></TD>
+									</TR>
+									<TR id="tr8">
+										<TD vAlign="top" align="center">8</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(38);">Goto  Q - 8</A></TD>
+									</TR>
+									<TR id="tr9">
+										<TD vAlign="top" align="center">9</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(39);">Goto  Q - 9</A></TD>
+									</TR>
+									<TR id="tr10">
+										<TD vAlign="top" align="center">10</TD>
+										<TD style="FONT-FAMILY: Arial" vAlign="middle" align="center"><A href="javascript: gotoQuestion(40);">Goto  Q - 10</A></TD>
+									</TR>
+									</TBODY>
+							</TABLE>
+						</TD>
+						<TD vAlign="bottom" align="center">
+							<INPUT class="coolButton" id="btnBack2" title="Back to Question" type="submit" value="Back"
+								name="btnBack2" onclick="goBack();">
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<INPUT id="radioclicked" type="hidden" value="null" name="radioclicked"> <INPUT id="thequestion" type="hidden" name="thequestion">
+			<INPUT id="theanswerlist" type="hidden" name="theanswerlist">
+		</FORM>
+	</BODY>
+</HTML>

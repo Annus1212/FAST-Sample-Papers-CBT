@@ -1,0 +1,196 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> <!-- 
+'*************************************************************************
+'	created:	17 Saturday May 2004, 10:25:26
+'	filename: 	CandidateScore.htm
+'	file ext:	htm
+'	author:	Khurram Javaid
+'	
+'	purpose:	QueryString: Expects a query string containing number of Unattempted,
+'				Attempted, Correct and Incorrect answers as int strings
+'				Displays these in a table
+'
+'*************************************************************************
+-->
+<HTML>
+	<HEAD>
+		<TITLE>Candidate Result</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<LINK href="NUTES.css" type="text/css" rel="stylesheet">
+			<SCRIPT language="JavaScript" src="scripts/security.js"></SCRIPT>
+			<SCRIPT Language="JavaScript">
+//
+// QueryString
+//
+
+function QueryString(key)
+{
+	var value = null;
+	for (var i=0;i<QueryString.keys.length;i++)
+	{
+		if (QueryString.keys[i]==key)
+		{
+			value = QueryString.values[i];
+			break;
+		}
+	}
+	return value;
+}
+QueryString.keys = new Array();
+QueryString.values = new Array();
+
+function QueryString_Parse()
+{
+	var query = window.location.search.substring(1);
+	var pairs = query.split("&");
+	
+	for (var i=0;i<pairs.length;i++)
+	{
+		var pos = pairs[i].indexOf('=');
+		if (pos >= 0)
+		{
+			var argname = pairs[i].substring(0,pos);
+			var value = pairs[i].substring(pos+1);
+			QueryString.keys[QueryString.keys.length] = argname;
+			QueryString.values[QueryString.values.length] = value;		
+		}
+	}
+
+}
+
+QueryString_Parse();
+			</SCRIPT>
+	</HEAD>
+	<BODY>
+		<FORM id="Form1" name="Form1" method="post">
+			<INPUT id="thequestion" type="hidden" name="thequestion"> <INPUT id="theanswerlist" type="hidden" name="theanswerlist">
+			<INPUT id="unanswered" type="hidden" name="unanswered"> <INPUT id="answered" type="hidden" name="answered">
+			<INPUT id="correct" type="hidden" name="correct">
+		</FORM>
+		<TABLE cellSpacing="0" cellPadding="0" rules="groups" width="100%" border="0">
+			<TR>
+				<TD width="25%"><IMG src="Images/NULogo.gif" width="118"></TD>
+				<TD class="MainText" vAlign="middle" align="left" width="50%">Online Admission Test</TD>
+				<TD vAlign="middle" align="center" width="25%">
+					<IMG border="0" src="Images/FastLogo.gif" width="118"></TD>
+			</TR>
+			<TR>
+				<TD colSpan="4">
+					<DIV align="center">
+							
+							<p><span style="background-color: #FFFFFF"><b>
+                            <font color="#FF0000" face="Arial" size="2">NOTE: The 
+                            below test statistics is just a sample and does not 
+                            tally the test question answered in the previous 
+                            pages. This sample test 
+                            will help you to familiarize with the test 
+                            environment. Please visit </font></b>
+                            <a href="http://www.nu.edu.pk">
+                            <font color="#FF0000" face="Arial" size="2"><b>
+                            www.nu.edu.pk</b></font></a><b><font color="#FF0000" face="Arial" size="2"> 
+                            for more information. Thank you.</font></b></span></p>
+							
+							<BR>
+						<TABLE class="TableBorder" cellSpacing="0" cellPadding="6" rules="groups" width="70%" align="center"
+							border="1">
+							<TR>
+								<TD bgColor="#003366" colSpan="2" height="24">
+									<DIV class="Table_1-header" align="center">
+										Candidate Score
+									</DIV>
+								</TD>
+							</TR>
+							<TR>
+								<TD vAlign="middle" align="center" width="80%">
+									<!-- Functional Code Start-->
+									<DIV align="right" ms_positioning="GridLayout">
+										<TABLE id="Table1" cellSpacing="1" cellPadding="1" width="60%" align="center" border="0">
+<TR>
+														<TD colSpan="2" class="Table_1-header" bgColor="#003366"><span id="lblCandidateID" style="height:19px;">
+														Candidate ID: 12345</span></TD>
+													</TR>
+													<TR>
+														<TD colSpan="2" class="Table_1-header" bgColor="#003366"><span id="lblCandidateName">    Name: 'Candidate Name'</span></TD>
+													</TR>
+											<TR>
+												<TD>
+													<SPAN class="StrongText" id="lblUnAttempted1">
+                Total Unattempted questions</SPAN></TD>
+												<TD><SPAN class="StrongText" id="lblUnAttempted">=
+ 
+                <SCRIPT language="Javascript">                	
+                	document.write(QueryString('unattempted'));
+														</SCRIPT>
+                </SPAN></TD>
+											</TR>
+											<TR>
+												<TD>
+													<SPAN class="StrongText" id="lblTotalAttempted1">
+                Total attempted questions</SPAN></TD>
+												<TD>
+													<SPAN class="StrongText" id="lblTotalAttempted">
+                =
+                
+                <SCRIPT language="Javascript">
+                	document.write(QueryString('attempted'));
+														</SCRIPT>
+                </SPAN></TD>
+											</TR>
+											<TR>
+												<TD>
+													<SPAN class="StrongText" id="lblCorrectChoices1">
+                Correctly answered questions </SPAN></TD>
+												<TD>
+													<SPAN class="StrongText" id="lblCorrectChoices">
+                =
+                
+                <SCRIPT language="Javascript">
+                	document.write(QueryString('correct'));
+														</SCRIPT>
+                </SPAN></TD>
+											</TR>
+											<TR>
+												<TD align="left">
+													<SPAN class="StrongText" id="lblInCorrect1">
+                Incorrectly answered questions</SPAN></TD>
+												<TD align="left" colSpan="2">
+													<SPAN class="StrongText" id="lblInCorrect">
+                =
+                
+                <SCRIPT language="Javascript">
+                	document.write(QueryString('incorrect'));
+														</SCRIPT>
+                </SPAN></TD>
+											</TR>
+											<TR>
+												<TD colSpan="2" rowSpan="0">
+													<HR align="center" width="97.64%" color="black" SIZE="2">
+												</TD>
+											</TR>
+											<TR>
+												<TD>
+													<SPAN class="StrongText" id="lblTotalQuestions1">
+                Total questions</SPAN></TD>
+												<TD>
+													<SPAN class="StrongText" id="lblTotalQuestions">
+                = 70</SPAN></TD>
+											</TR>
+										</TABLE>
+									</DIV>
+									<SPAN id="ByeText" class="StrongText" style="WIDTH:100%;FONT-STYLE:italic">
+          Thank you for taking the test, the merit would be announced later.<BR> www.nu.edu.pk </SPAN>
+								</TD>
+							</TR>
+							<TR>
+								<TD colSpan="2">
+									<DIV class="footer-text" style="BORDER-LEFT-COLOR: aqua; BORDER-BOTTOM-COLOR: aqua; BORDER-TOP-COLOR: aqua; BORDER-RIGHT-COLOR: aqua"
+										align="center">
+										  © National University of Computer and Emerging Sciences</DIV>
+								</TD>
+							</TR>
+						</TABLE>
+					</DIV>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

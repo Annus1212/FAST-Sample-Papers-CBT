@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> <!-- 
+'*************************************************************************
+'	created:	31 March 2004, 14:27:27
+'	filename: 	Index.htm
+'	file ext:	htm
+'	author:		Khurram Javaid
+'	
+'	purpose:	Displays the instructions and section information
+'				If the check box is ticked allows to goto to the 
+'				the First Section
+'*************************************************************************
+--><HTML><HEAD>
+		<TITLE>Test Instructions</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<LINK href="NUTES.css" type="text/css" rel="stylesheet">
+			<SCRIPT language="JavaScript" src="scripts\security_loginpage.js"></SCRIPT>
+			<SCRIPT language="JavaScript">
+			//used for poping up new window
+			function popUp(URL) {
+			
+				day = new Date();
+				id = day.getTime();
+			
+				iWidth = screen.availWidth*3/4;
+				iHeight = screen.availHeight*3/4;
+				//showModalDialog(URL,null,"resizable:no;status:no;unadorned:1;center:1;dialogHeight:40pc;dialogWidth:50pc;");		
+				//eval("page" + id + " = window.open(URL, '" + URL + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width='+iWidth+',height='+iHeight+',left = 0,top = 0');");
+				
+				window.open(URL, 'help_instructions', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width='+iWidth+',height='+iHeight+',left = 0,top = 0');					
+			}
+
+			</SCRIPT>
+	</HEAD>
+	<BODY MS_POSITIONING="FlowLayout">
+	
+		<TABLE cellSpacing="0" cellPadding="0" width="1000" border="0" ms_2d_layout="TRUE">
+			<TR vAlign="top">
+				<TD>
+					<FORM language="javascript" id="Form1" name="Form1" onSubmit="doValidate();" action="Section_1_Main.htm"
+						method="post">
+						
+						<SCRIPT language="javascript">
+			function checkAgreed(source, args){
+			
+				if(Form1.chkHasRead.checked==true)
+					args.IsValid = true;
+				else										
+					args.IsValid = false;									
+			}
+									</SCRIPT>
+				<SCRIPT language="javascript" src="Test%20Instructions_files/WebUIValidation.js">
+  
+</SCRIPT>
+						<TABLE cellSpacing="0" cellPadding="0" border="0" ms_2d_layout="TRUE">
+							<TR vAlign="top">
+								<TD width="9" height="15"></TD>
+								<TD width="1"></TD>
+								<TD width="948"></TD>
+								<TD width="156"></TD>
+							</TR>
+							<TR vAlign="top">
+								<TD colSpan="2" height="1"></TD>
+								<TD colSpan="2">
+									
+								</TD>
+							</TR>
+							<TR vAlign="top">
+								<TD colSpan="3" height="23"></TD>
+								<TD>
+										</TD>
+							</TR>
+							<TR vAlign="top">
+								<TD height="1380"></TD>
+								<TD colSpan="3">
+									<TABLE id="Table1" cellSpacing="8" height="124" width="956">
+										<TR>
+											<TD><IMG height="118" src="Images\NULogo.gif" width="118"></TD>
+											<TD class="MainText" vAlign="middle" align="center"><SPAN id="lblOrganizationName">FAST-NU<BR>
+						</SPAN><SPAN id="lblTestName">Online Admission Test</SPAN>
+												&nbsp;</TD>
+											<TD vAlign="bottom" align="center"><A class="header-links" onClick="popUp('help.htm')">Help</A></TD>
+											<TD vAlign="middle" align="right"><IMG src="Images\FastLogo.gif" width="118" border="0"></TD>
+										</TR>
+										<TR>
+											<TD class="StrongText" align="center" colSpan="4"><SPAN id="lblSession">
+													<TABLE class="StrongText" id="Table2" borderColor="silver" cellSpacing="1" cellPadding="5"
+														rules="groups" border="1">
+														<TR>
+															<TD height="22">Candidate ID:</TD>
+															<TD height="22">
+																<span class="StrongText">12345</span></TD>
+														</TR>
+														<TR>
+															<TD>Test Center:</TD>
+															<TD><SPAN class="StrongText" id="lblCenter">NU-FAST</SPAN></TD>
+														</TR>
+														<TR>
+															<TD>Test Session:&nbsp;</TD>
+															<TD><SPAN class="StrongText" id="lblTestSession">1</SPAN></TD>
+														</TR>
+														<TR>
+															<TD>Programme:</TD>
+															<TD><SPAN class="StrongText" id="lblProgramme">BS 
+                        (Engg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></TD>
+														</TR>
+													</TABLE>
+												</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD vAlign="middle" align="center" colspan="4">
+												<SPAN class="NormalText" id="CustomValidator1" style="VISIBILITY: hidden; COLOR: red"
+							errormessage="You cannot start the test without reading and agreeing to the instructions."
+							evaluationfunction="CustomValidatorEvaluateIsValid" clientvalidationfunction="checkAgreed">You cannot start the test without 
+							reading and agreeing to the instructions.</SPAN></TD>
+										</TR>
+										<TR>
+											<TD class="StrongText" align="center" colSpan="4"><SPAN id="lblIntroMsg">'Candidate Name' welcome 
+							to the BS (Engg) Admission test.</SPAN></TD>
+										</TR>
+										<TR>
+											<TD class="MainText" align="center" colSpan="4">
+												<DIV class="StrongText" align="center" ms_positioning="FlowLayout">
+													<TABLE height="40" cellSpacing="0" cellPadding="0" width="650" border="0" ms_1d_layout="TRUE" ID="Table4">
+														<TR>
+															<TD align="center" >
+																<HR align="left" width="650" SIZE="1">
+																GENERAL INSTRUCTIONS 
+																<HR align="left" width="650" SIZE="1">
+															</TD>
+														</TR>
+													</TABLE>
+												</DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD class="NormalText" align="center" colSpan="4">
+												<DIV CLASS="NormalText" ID="DIV1" align="center" ms_positioning="FlowLayout">
+													<TABLE height="439" cellSpacing="0" cellPadding="0" width="650" border="0" ms_2d_layout="TRUE" ID="Table5">
+														<TR >
+															<TD >
+																<DIV CLASS="NormalText" ID="DIV2" align="left" >
+																	<UL>
+																		<LI>
+																		Calculators, Mobile Phones, Floppy Disks and CDs are not allowed in the test 
+																		area.
+																		<LI>
+																		Do not show your Verification Slip (with your user ID and password) to any 
+																		other candidate, anyone found doing so will be disqualified from the test.
+																		<LI>
+																		After you have entered your login name and password, and the system has logged 
+																		you in the test, use only the MOUSE during the test.
+																		<LI>
+																		If you try to use keyboard, a warning message will be displayed on your screen. 
+																		If this message appears on your screen more than once you can be disqualified 
+																		from the test.
+																		<LI>
+																		Anyone found with a screen showing some thing other than the Admission Test 
+																		will be disqualified from the test and removed from the list of candidates for 
+																		admission.
+																		<LI>
+																		Any evidence of cheating, use of unfair means or non-compliance with the 
+																		instructions will disqualify the candidate from the test and his/her name will 
+																		be removed from the list of candidates for admission.
+																		<LI>
+																		Rough work should be done on the Rough Sheet attached with your Verification 
+																		Slip.
+																		<LI>
+																		When you are told, click on the box below to indicate that you have read and 
+																		understood the instructions.
+																		<LI>
+																		When you are told, only then click on the Start Test button below.
+																		<LI>
+																		The time displayed on your screen is the Time Left for that particular section 
+																		only.
+																		<LI>
+																		The number showing Total Questions, displayed on your screen, is the number of 
+																		questions in that particular section only.
+																		<LI>
+																		The Question no. displayed on your screen shows the number of questions you 
+																		have covered in the current section.
+																		<LI>
+																		Occasionally keep monitoring the Time Left, which is continuously updated and 
+																		displayed on your screen.
+																		<LI>
+																		You can review the attempted questions of the current section by repeatedly 
+																		clicking the Back button.
+																		<LI>
+																		You can review questions that you did not answer in the current section, by 
+																		clicking “View Unanswered Questions”.
+																		<LI>
+																		You CANNOT view questions of previous sections.
+																		<LI>
+																		First and the last questions of every section are highlighted with red.
+																		<LI>
+																		Each section is allotted a limited time. After the allotted time for a section 
+																		is over, you will be automatically moved to the first question of the next 
+																		section.
+																		<LI>
+																			After the allotted time of the last section is over, you will be automatically 
+																			logged out from the test.</LI></UL>
+																</DIV>
+															</TD>
+														</TR>
+													</TABLE>
+												</DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD align="center" colSpan="4">
+												<DIV class="BoldText" id="pnlSectionTable" align="center">Test Summary
+													<BR>
+													<HR align="left" width="100%" SIZE="1">
+													<p><font color="#ff0000">There will be Negative Marking in Actual Test</font></p>
+													<TABLE cellspacing="0" align="Justify" rules="all" border="1" id="Table3">
+														<TR class="Table_2-header">
+															<TD>Section</TD>
+															<TD>Time</TD>
+															<TD>Questions</TD>
+															<TD>Weight</TD>
+														</TR>
+														<TR class="NormalText">
+															<TD align="left" valign="middle" width="150">
+																English</TD>
+															<TD align="center" valign="middle" width="75">
+																15 minutes</TD>
+															<TD align="center" valign="middle" width="75">
+																20</TD>
+															<TD align="center" valign="middle" width="75">10 %</TD>
+														</TR>
+                                                        <TR class="NormalText">
+															<TD align="left" valign="middle" width="150">I.Q. &amp; Analytical Skills</TD>
+															<TD align="center" valign="middle" width="75">
+																20 minutes</TD>
+															<TD align="center" valign="middle" width="75">
+																20</TD>
+															<TD align="center" valign="middle" width="75">20 %</TD>
+														</TR>
+														<TR class="NormalText">
+															<TD align="left" valign="middle" width="150">
+																Basic Mathematics</TD>
+															<TD align="center" valign="middle" width="75">
+																10 minutes</TD>
+															<TD align="center" valign="middle" width="75">
+																10</TD>
+															<TD align="center" valign="middle" width="75">
+																10 %</TD>
+														</TR>
+														
+														<TR class="NormalText">
+															<TD align="left" valign="middle" width="150">
+																Advance Mathematics</TD>
+															<TD align="center" valign="middle" width="75">
+																60 minutes</TD>
+															<TD align="center" valign="middle" width="75">
+																40</TD>
+															<TD align="center" valign="middle" width="75">
+																40 %</TD>
+														</TR>
+														<TR class="NormalText">
+															<TD align="left" valign="middle" width="150">
+																Physics</TD>
+															<TD align="center" valign="middle" width="75">
+																15 minutes</TD>
+															<TD align="center" valign="middle" width="75">
+																10</TD>
+															<TD align="center" valign="middle" width="75">
+																20 %</TD>
+														</TR>
+													</TABLE>
+													<p>
+														<font color="#ff0000">The above test summary is a sample to help familiarize the 
+															user with the test environment. The sample test may contain fewer questions 
+															than mentioned above.</font></p>
+													<HR align="left" width="100%" SIZE="1">
+													<TABLE id="tblAfterInstructionsContainer" cellSpacing="0" cellPadding="8" rules="groups"
+														width="100%" align="left" border="0">
+														<TR>
+															<TD vAlign="middle" align="center"><SPAN class="NormalText"><INPUT id="chkHasRead" type="checkbox" value="ON" name="chkHasRead"><LABEL for="chkHasRead">I 
+												have carefully read the Instructions and I agree to follow them</LABEL>
+																</SPAN></TD>
+														</TR>
+														<TR>
+															<TD vAlign="middle" align="center"><INPUT language="javascript" class="coolButton" id="btnStartTest" onClick="if (typeof(Page_ClientValidate) == 'function') Page_ClientValidate(); "
+																	type="submit" value="Start Test" name="btnStartTest"></TD>
+														</TR>
+													</TABLE>
+												</DIV>
+											</TD>
+										</TR>
+										<TR>
+											<TD colSpan="4">
+												<DIV class="NormalText" align="center">  © National University of Computer and 
+													Emerging Sciences</DIV>
+											</TD>
+										</TR>
+									</TABLE>
+								</TD>
+							</TR>
+							<TR vAlign="top">
+								<TD colSpan="2" height="16"></TD>
+								<TD colSpan="2">
+									<SPAN class="NormalText" id="lblErrorMsg"></SPAN></TD>
+							</TR>
+						</TABLE>
+
+						
+<SCRIPT language="javascript">
+<!--
+	var Page_Validators =  new Array(document.all["CustomValidator1"]);
+		// -->
+			</SCRIPT>
+			<SCRIPT language="javascript">
+<!--
+var Page_ValidationActive = false;
+if (typeof(clientInformation) != "undefined" && clientInformation.appName.indexOf("Explorer") != -1) {
+    if (typeof(Page_ValidationVer) == "undefined")
+        alert("Unable to find script library '/aspnet_client/system_web/1_0_3705_288/WebUIValidation.js'. Try placing this file manually, or reinstall by running 'aspnet_regiis -c'.");
+    else if (Page_ValidationVer != "125")
+        alert("This page uses an incorrect version of WebUIValidation.js. The page expects version 125. The script library is " + Page_ValidationVer + ".");
+    else
+        ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        ValidatorCommonOnSubmit();
+    }
+}
+
+function doValidate() {
+	if (ValidatorOnSubmit()==true){		
+		return true;
+	}
+	else
+	{		
+		window.scrollTo(0,0);
+		return false;
+	}
+}
+
+// -->
+			</SCRIPT>
+
+					</FORM>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

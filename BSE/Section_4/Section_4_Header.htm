@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<LINK href="../NUTES.css" type="text/css" rel="stylesheet">
+			<SCRIPT language="JavaScript" src="../scripts/security.js"></SCRIPT>
+			<SCRIPT language="javascript">
+				function doConfirmLogout(){
+				
+				//get the answerlist from the main frame
+				strAnswerList = new String();
+				var tempAnswerList;
+				tempAnswerList = window.parent.frames["main"].window.Form1.theanswerlist.value;
+				strAnswerList = tempAnswerList;
+
+
+				//get the questionnum from the main frame
+				strQ = new String();
+				var tempQ;
+				tempQ = window.parent.frames["main"].window.Form1.thequestion.value;
+				strQ = tempQ;
+
+				//alert('../ConfirmLogout.htm?answers='+strAnswerList+'&question='+strQ);
+				//redirect to next section
+				window.parent.frames["main"].window.location.href='../ConfirmLogout.htm?answers='+strAnswerList+'&question='+strQ+'&section=1';
+
+			}
+
+			function padLeft(x) { return (x<10?"0":"") + x }
+			
+			
+			//var start_time = new Date(0,0,0,0,0,15);
+			var start_time = new Date();
+			
+			function time_in_status(hrs,mins,secs)
+			{				
+				var h,m,s,t;
+				//Date( year : int, month : int, 
+				//date : int[, hours : int [, minutes : int [, seconds : int [, ms : int]]]] )
+				
+				//start_time.setDate(0,0,0,0,1,1);
+				if (hrs!=null){
+					start_time.setHours(hrs);
+					start_time.setMinutes(mins);
+					start_time.setSeconds(secs);
+				}
+				
+				if( !(start_time.getMinutes() == 0 && start_time.getSeconds() == 0 && start_time.getHours() ==0) )
+				{
+					h = start_time.getHours();
+  					m = start_time.getMinutes();
+					s = start_time.getSeconds();
+					t = h + " Hours " + m + " Minutes " + s + " Seconds";
+					defaultStatus = t;
+					start_time.setSeconds(start_time.getSeconds() - 1);
+					setTimeout("time_in_status()", 1000);
+				}
+				defaultStatus = start_time.getHours() + " : " + start_time.getMinutes() + " : " + start_time.getSeconds() 				
+				window.Form1.btnTime.value = start_time.getHours() + " : " + padLeft(start_time.getMinutes()) + " : " + padLeft(start_time.getSeconds())
+				
+				//if start time equals 0 i.e. hours = 0 and minutes = 0 and seconds = 0
+				if( start_time.getHours() == 0 && start_time.getMinutes() == 0 &&  start_time.getSeconds() == 0)
+				{					
+					t = "0 Minutes 0 Seconds -> Time is Up";					
+					defaultStatus = t;
+
+					//get the answerlist from the main frame
+					strAnswerList = new String();
+					var tempAnswerList;
+					tempAnswerList = window.parent.frames["main"].window.Form1.theanswerlist.value;
+					strAnswerList = tempAnswerList;
+
+					//redirect to next section
+					//alert('../Section_2_Main.htm?answers='+strAnswerList+'&question=11');
+					//window.parent.frames["header"].window.location.href= '../Section_2/Section_2_Header.htm';
+					//window.parent.frames["main"].window.location.href= '../Section_2/Q6.htm?answers='+strAnswerList+'&question=6';
+					window.parent.location.href='Section_Timeup.htm?answers='+strAnswerList;
+				}
+			}
+			
+			//used for poping up new window
+			function popUp(URL) {
+			
+				day = new Date();
+				id = day.getTime();
+			
+				iWidth = screen.availWidth*3/4;
+				iHeight = screen.availHeight*3/4;
+				//showModalDialog(URL,null,"resizable:no;status:no;unadorned:1;center:1;dialogHeight:40pc;dialogWidth:50pc;");		
+				//eval("page" + id + " = window.open(URL, '" + URL + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width='+iWidth+',height='+iHeight+',left = 0,top = 0');");
+				
+				window.open(URL, 'help_instructions', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width='+iWidth+',height='+iHeight+',left = 0,top = 0');
+			}
+			</SCRIPT>
+	</HEAD>
+	<BODY topMargin="0" onload="time_in_status(0,30,0);" MS_POSITIONING="GridLayout">
+		<TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%" BORDER="0" MS_2D_LAYOUT="TRUE">
+			<TR VALIGN="top">
+				<TD>
+					<FORM id="Form1" name="Form1" action="QHeader.aspx" method="post">
+						<TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%" BORDER="0" MS_2D_LAYOUT="TRUE">
+							<TR VALIGN="top">
+								<TD ></TD>
+								<TD >
+									<TABLE cellSpacing="0" cellPadding="0" border="0" WIDTH="100%">
+										<TR>
+											<TD rowSpan="2"></TD>
+											<TD align="center" rowSpan="2" WIDTH="20%">
+												&nbsp;</TD>
+											<TD class="MainText" vAlign="top" align="center" width="60%">
+												Online Admission Test</TD>
+											<TD width="20%" rowSpan="2" VALIGN="top" ALIGN="right">
+												<DIV align="center"><A CLASS="header-links" ONCLICK="popUp('../help.htm')">Help</A> 
+													| <A CLASS="header-links" ONCLICK="popUp('../instructions.htm')">Instructions</A>
+													| <A CLASS="header-links" HREF="javascript:doConfirmLogout()">Logout</A>
+												</DIV>
+												&nbsp; 
+                                                <IMG ALT="" SRC="../Images/FastLogo.gif" width="118" height="84">
+											</TD>
+										</TR>
+										<TR class="MediumText">
+											<TD align="center" VALIGN="top" WIDTH="60%"><SPAN class="Admission-test" id="lblSessionYear">
+                                            &nbsp;Practice Test  </SPAN><DIV>
+													<SPAN class="Admission-test" id="lblSession">Test Session: 
+                  1<BR>12345 - 'Candidate Name'</SPAN></DIV>
+											</TD>
+											<TD>
+											</TD>
+										</TR>
+										<TR>
+											<TD colSpan="5">
+												<DIV align="center">
+													<TABLE cellSpacing="0" cellPadding="0" width="100%" align="right" border="0">
+														<TR>
+															<TD class="subject" vAlign="top" align="center" WIDTH="33%">
+																Advance Maths</TD>
+															<TD CLASS="subject" VALIGN="top" align="left" WIDTH="33%"></TD>
+															<TD class="subject" vAlign="top" align="center" WIDTH="33%">&nbsp;</TD>
+														</TR>
+														<TR>
+															<TD class="subject" vAlign="middle" align="center" WIDTH="33%">
+																<SPAN class="subject">Questions: 
+                                                                20</SPAN></TD>
+															<TD class="subject" vAlign="middle" align="center" WIDTH="33%"></TD>
+															<TD class="subject" vAlign="middle" align="center" WIDTH="33%">
+																<DIV align="center">
+																	Time Left: <INPUT class="question-head" id="btnTime" type="button" style="WIDTH: 80px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: transparent; BORDER-BOTTOM-STYLE: none">
+																</DIV>
+															</TD>
+														</TR>
+													</TABLE>
+												</DIV>
+											</TD>
+										</TR>
+									</TABLE>
+								</TD>
+							</TR>
+						</TABLE>
+					</FORM>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

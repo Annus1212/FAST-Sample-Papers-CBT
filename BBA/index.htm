@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> <!-- 
+'*************************************************************************
+'	created:	30 March 2004, 14:08
+'	filename: 	How.htm
+'	file ext:	htm
+'	author:		Khurram Javaid
+'	
+'	purpose:	Onload: Moves the broswer window to the top left corner of
+'				the screen, Resizes to the max available screen area
+'				Displays the How to take the test steps in a table
+'				Continue button : On click goes to the index.htm for login
+'
+'*************************************************************************
+-->
+<HTML>
+	<HEAD>
+		<TITLE>How to take the test?</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<LINK href="NUTES.css" type="text/css" rel="stylesheet">
+		<SCRIPT language="JavaScript" src="scripts/security_loginpage.js"></SCRIPT>
+		<SCRIPT language="JavaScript"> 
+			function setFocus(){
+				window.focus();
+				window.moveTo(0,0);
+				window.resizeTo(screen.availWidth,screen.availHeight);
+				alert(' Please note the following: \n \n Login ID:   12345 \n Password: 12345 \n \n DISCLAIMER: \n The Practice Test included in this CD is meant to provide the user with the general understanding of \n computer based Admission Test.The questions in the Practice Test are NOT intended as a study guide.');
+			}			
+			
+			function cursorwait() {
+			  document.body.style.cursor='wait';
+			  document.Form1.btnContinue.style.cursor='wait';
+			  document.Form1.btnContinue.disabled=true;
+			 }
+
+			function cursordone() {
+			   document.body.style.cursor='auto';
+			 }			
+		</SCRIPT>
+	</HEAD>
+	<BODY onload="setFocus();">
+		<FORM id="Form1" name="Form1" action="login.htm" method="post">
+			<NOSCRIPT class="StrongText">
+				<BR>
+				[ YOUR BROWSER DOES NOT SUPPORT JAVASCRIPT, THIS APPLICATION WILL NOT FUNCTION 
+				PROPERLY ]
+				<BR>
+				[ PLEASE ENABLE IT AND THEN RUN THE APPLICATION ]</NOSCRIPT>
+			<TABLE id="Table1" cellSpacing="0" cellPadding="0" width="100%" border="0">
+				<TBODY>
+					<TR>
+						<TD style="HEIGHT: 53px" width="25%">
+                        <IMG id="ImgLogoLeft" src="Images/NuLogo.gif" border="0" width="118" height="118"></TD>
+						<TD class="MainText" style="HEIGHT: 53px" vAlign="middle" align="left" width="50%">
+							<P align="center">Welcome to the <SPAN id="lblOrganizationName">FAST-<SPAN ID="lblOrganizationName">NU</SPAN><BR>
+								</SPAN><SPAN id="lblTestName">Online Admission Test</SPAN>&nbsp;<SPAN id="lblSessionYear"></SPAN></P>
+						</TD>
+						<TD style="HEIGHT: 53px" vAlign="middle" align="right" width="25%">
+                        <IMG id="ImgLogoRight" src="Images/FastLogo.gif" border="0" width="118" height="84"></TD>
+					</TR>
+					<TR>
+						<TD colSpan="4">
+							<DIV align="center">
+								<DIV align="center">
+									<TABLE class="TableBorder" id="Table2" style="BORDER-COLLAPSE: collapse" borderColor="#111111"
+										cellSpacing="0" cellPadding="6" rules="groups" width="95%" border="1">
+										<TBODY>
+											<TR>
+												<TD bgColor="#003366" colSpan="2" height="24">
+													<DIV class="Table_1-header" align="center">How to take the test?&nbsp;
+													</DIV>
+												</TD>
+											</TR>
+											<TR>
+												<TD vAlign="middle" align="center" width="70%"><!-- Functional Code Start-->
+													<TABLE ID="Table3" CELLSPACING="0" CELLPADDING="0" WIDTH="100%" BORDER="0">
+														<TR>
+															<TD CLASS="StepText" STYLE="WIDTH: 100px" VALIGN="top" ALIGN="left">STEP 1</TD>
+															<TD CLASS="BoldText" align="left" STYLE="WIDTH: 160px" VALIGN="top">Login to the 
+																test</TD>
+															<TD CLASS="NormalText">- Enter your <B>Login ID</B> provided on your Admit Card.<BR>
+																- <SPAN LANG="EN-US">Enter your <B>Password</B>, will be provided to you when you 
+																	report at the test center</SPAN>.<BR>
+																- Click <B>Login</B> button.</TD>
+														</TR>
+														<TR>
+															<TD STYLE="WIDTH: 100px"></TD>
+															<TD CLASS="BoldText" align="right" STYLE="WIDTH: 160px">&nbsp;&nbsp;</TD>
+															<TD CLASS="NormalText"></TD>
+														</TR>
+														<TR>
+															<TD CLASS="StepText" STYLE="WIDTH: 100px" VALIGN="top" ALIGN="left" BGCOLOR="gainsboro">STEP 
+																2</TD>
+															<TD CLASS="BoldText" align="left" STYLE="WIDTH: 160px" VALIGN="top" BGCOLOR="gainsboro">Read 
+																the instructions</TD>
+															<TD CLASS="NormalText" BGCOLOR="gainsboro">- Carefully read the Instructions.<BR>
+																- Note the total sections and the time allocated, number of questions, 
+																weightage of each section.</TD>
+														</TR>
+														<TR>
+															<TD STYLE="WIDTH: 100px; HEIGHT: 18px"></TD>
+															<TD CLASS="BoldText" STYLE="WIDTH: 160px; HEIGHT: 18px" align="right">&nbsp;&nbsp;</TD>
+															<TD CLASS="NormalText" STYLE="HEIGHT: 19px"></TD>
+														</TR>
+														<TR>
+															<TD CLASS="StepText" STYLE="WIDTH: 100px" VALIGN="top" ALIGN="left">STEP 3</TD>
+															<TD CLASS="BoldText" align="left" STYLE="WIDTH: 160px" VALIGN="top">Start the test</TD>
+															<TD CLASS="NormalText">- Check the read and agree instructions box.<BR>
+																- Click the <B>Start Test </B>button.</TD>
+														</TR>
+														<TR>
+															<TD STYLE="WIDTH: 100px"></TD>
+															<TD CLASS="BoldText" align="right" STYLE="WIDTH: 160px">&nbsp;&nbsp;</TD>
+															<TD CLASS="NormalText"></TD>
+														</TR>
+														<TR>
+															<TD CLASS="StepText" STYLE="WIDTH: 100px" VALIGN="top" ALIGN="left" BGCOLOR="gainsboro">STEP 
+																4</TD>
+															<TD CLASS="BoldText" align="left" STYLE="WIDTH: 160px" VALIGN="top" BGCOLOR="gainsboro">Answer 
+																the questions</TD>
+															<TD CLASS="NormalText" BGCOLOR="gainsboro">- <SPAN LANG="EN-US">Read the question 
+																	carefully and choose the correct answer by clicking the button next to
+																	<BR>
+																	&nbsp; your choice of answer</SPAN>.<BR>
+																- <SPAN LANG="EN-US">Go to the next or previous question by clicking <B>Forward</B> 
+																	or <B>Back</B> button as desired</SPAN>.<BR>
+																- <B><SPAN LANG="EN-US">Skip Forward</SPAN></B><SPAN LANG="EN-US"> and <B>Skip Back</B>
+																	buttons will appear when you have not selected any answer.<BR>
+																	- After selecting a choice if you want to leave the question unanswered, click 
+																	the<B> Reset Choice </B>button.</SPAN></TD>
+														</TR>
+														<TR>
+															<TD STYLE="WIDTH: 100px"></TD>
+															<TD CLASS="BoldText" align="right" STYLE="WIDTH: 160px">&nbsp;&nbsp;</TD>
+															<TD CLASS="NormalText"></TD>
+														</TR>
+														<TR>
+															<TD CLASS="StepText" STYLE="WIDTH: 100px" VALIGN="top" ALIGN="left">STEP 5</TD>
+															<TD CLASS="BoldText" align="left" STYLE="WIDTH: 160px" VALIGN="top">Logout</TD>
+															<TD CLASS="NormalText">-<SPAN></SPAN> <SPAN LANG="EN-US">When you have answered the 
+																	questions, you must <B>log out </B>and <B>confirm </B>to submit the paper.</SPAN></TD>
+														</TR>
+														<TR>
+															<TD STYLE="WIDTH: 100px; HEIGHT: 18px"></TD>
+															<TD CLASS="BoldText" align="right" STYLE="WIDTH: 160px; HEIGHT: 18px">&nbsp;&nbsp;</TD>
+															<TD CLASS="NormalText" STYLE="HEIGHT: 18px"></TD>
+														</TR>
+														<TR>
+															<TD STYLE="WIDTH: 100px">
+															</TD>
+															<TD CLASS="BoldText" align="center" STYLE="WIDTH: 160px">
+																<P CLASS="BoldText" align="center">Note:</P>
+															</TD>
+															<TD CLASS="NormalText">-<B><SPAN LANG="EN-US">&nbsp; Each section has a time limit.<BR>
+																	</SPAN></B>-&nbsp; <B><SPAN LANG="EN-US">Next section will be automatically 
+																		displayed on your screen when previous section’s
+																		<BR>
+																		&nbsp;&nbsp; allocated time is up.<BR>
+																		- </SPAN></B>&nbsp;<B><SPAN LANG="EN-US">You will not be able to come back to a 
+																		section after you have completed a section.<BR>
+																		-&nbsp; First and last question of each section are highlighted.</SPAN></B><BR>
+																&nbsp;</TD>
+														</TR>
+														<TR>
+															<TD CLASS="StrongText" align="center" COLSPAN="3">GOOD LUCK!<BR>
+																<INPUT CLASS="coolButton" ID="btnContinue" TITLE="Click here to goto Candidiate Login"
+																	TYPE="submit" VALUE="Continue" NAME="btnContinue"></TD>
+														</TR>
+													</TABLE>
+												</TD>
+											</TR>
+											<TR>
+												<TD colSpan="2">
+													<DIV class="footer-text" style="BORDER-LEFT-COLOR: aqua; BORDER-BOTTOM-COLOR: aqua; BORDER-TOP-COLOR: aqua; BORDER-RIGHT-COLOR: aqua"
+														align="center"> © National University of Computer and Emerging Sciences</DIV>
+												</TD>
+											</TR>
+										</TBODY>
+									</TABLE>
+								</DIV>
+							</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</FORM>
+	</BODY>
+</HTML>

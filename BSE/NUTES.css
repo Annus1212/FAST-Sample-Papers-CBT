@@ -1,0 +1,202 @@
+.footer-text
+{
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: none;
+}
+A
+{
+	font-weight: normal;
+	font-size: 12px;
+	cursor: hand;
+	color: #003366;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+A:hover
+{
+	font-weight: normal;
+	font-size: 12px;
+	color: #009900;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: underline;
+}
+.Question
+{
+	font-weight: bold;
+	font-size: 14px;
+	color: #003366;
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-variant: normal;
+}
+.subject
+{
+	font-weight: bold;
+	font-size: 16px;
+	color: #000000;
+	font-style: normal;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-variant: normal;
+}
+.BoldText
+{
+	font-weight: bold;
+	font-size: 12px;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.MediumText
+{
+	font-weight: normal;
+	font-size: 18px;
+	color: #003366;
+	font-style: normal;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.question-head
+{
+	font-weight: bold;
+	font-size: 14px;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.answer-head
+{
+	font-weight: bold;
+	font-size: 14px;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.Table_1-header
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: #ffffff;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.Table_2-header
+{
+	font-weight: bold;
+	font-size: 12px;
+	border-left-color: gray;
+	border-bottom-color: gray;
+	color: white;
+	border-top-color: gray;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: gray;
+	text-align: center;
+	font-variant: normal;
+	text-decoration: none;
+	border-right-color: gray;
+}
+.NormalText
+{
+	font-weight: normal;
+	font-size: 12px;
+	color: #000000;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.ItalicText
+{
+	font-weight: normal;
+	font-size: 12px;
+	color: gray;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.StrongText
+{
+	font-weight: bold;
+	font-size: 16px;
+	color: #000000;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.coolButton
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #003366;
+	letter-spacing: 1px;
+	width: 210px;
+}
+.coolTextBox
+{
+	border-right: gray 1px;
+	border-top: gray 1px;
+	font-size: 12px;
+	border-left: gray 1px;
+	border-bottom: gray 1px;
+}
+.BoldText
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.QMsgText
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #ffffff;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #ff0000;
+	font-variant: normal;
+	text-decoration: none;
+}
+.TableBorder
+{
+	border-right: #003366 thin solid;
+	border-top: #003366 thin solid;
+	border-left: #003366 thin solid;
+	border-bottom: #003366 thin solid;
+	border-collapse: collapse;
+}
+.MainText
+{
+	font-weight: bold;
+	font-size: 25px;
+	color: #000000;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	text-decoration: none;
+}
+.StepText
+{
+	
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #000000;
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-variant: small-caps;
+	text-decoration: none;
+}
